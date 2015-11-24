@@ -132,7 +132,7 @@ class Navigator(object):
             app.extensions = {}
         app.extensions['navigator'] = self
 
-    def __call__(self, page=None, per_page=None, **extra):
+    def paginate(self, page=None, per_page=None, **extra):
         page = page or self.page
         per_page = per_page or self.per_page
         return PageState(
@@ -188,7 +188,7 @@ class Navigator(object):
 class SQLAlchemyNavigator(Navigator):
     """Uses SQLAlchemy query object to create navigation."""
 
-    def __call__(self, query, page=None, per_page=None):
+    def paginate(self, query, page=None, per_page=None):
         page = page or self.page
         per_page = per_page or self.per_page
         items = query.offset((page - 1) * per_page).limit(per_page).all()
@@ -200,7 +200,7 @@ class SQLAlchemyNavigator(Navigator):
         else:
             total = query.order_by(None).count()
 
-        return super(SQLAlchemyNavigator, self).__call__(
+        return super(SQLAlchemyNavigator, self).paginate(
             page=page,
             per_page=per_page,
             total=total,
