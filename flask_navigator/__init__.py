@@ -13,6 +13,7 @@ from math import ceil
 from flask import (
     current_app, request
 )
+from flask_navigator.compat import xrange
 
 
 __version__ = '0.0.1'
