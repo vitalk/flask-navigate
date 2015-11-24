@@ -32,7 +32,7 @@ def read(*parts):
 
 
 def get_version():
-    version_file = ''.join(read('flask_navigator.py'))
+    version_file = ''.join(read('flask_navigator', '__init__.py'))
     version_match = re.search(r'^__version__ = [\'"]([^\'"]*)[\'"]',
                               version_file, re.MULTILINE)
     if version_match:
