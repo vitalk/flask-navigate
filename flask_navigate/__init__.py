@@ -19,6 +19,9 @@ from flask_navigate.compat import xrange
 __version__ = '0.0.1'
 
 
+_default_exclude_keys = tuple(['page'])
+
+
 class Pager(object):
     """Page number generator.
 
@@ -139,7 +142,7 @@ class Navigator(object):
             page=page,
             per_page=per_page,
             pager_class=self.pager_class,
-            args=self.args,
+            args=self.args(),
             **extra
         )
 
@@ -167,14 +170,13 @@ class Navigator(object):
 
         return value
 
-    @property
-    def args(self):
+    def args(self, exclude_keys=_default_exclude_keys):
         request_args = request.args.items(multi=True)
         view_args = request.view_args.items()
 
         args = {}
         for k, value in list(request_args) + list(view_args):
-            if k == 'page':
+            if k in exclude_keys:
                 continue
             if k not in args:
                 args[k] = value

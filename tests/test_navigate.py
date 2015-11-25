@@ -36,11 +36,15 @@ class TestNavigator:
 
     def test_args(self, navigator):
         with navigator.app.test_request_context('/?foo=42&page=3'):
-            assert navigator.args == {'foo': '42'}
+            assert navigator.args() == {'foo': '42'}
 
     def test_list_in_args(self, navigator):
         with navigator.app.test_request_context('/?foo=42&foo=3&page=1'):
-            assert navigator.args == {'foo': ['42', '3']}
+            assert navigator.args() == {'foo': ['42', '3']}
+
+    def test_exclude_custom_keys_from_args(self, navigator):
+        with navigator.app.test_request_context('/?foo=42&bar=1'):
+            assert navigator.args(exclude_keys=tuple(['bar'])) == {'foo': '42'}
 
 
 class TestRequestParser(TestNavigator):
