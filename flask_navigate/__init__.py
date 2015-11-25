@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-    Flask-Navigator
-    ~~~~~~~~~~~~~~~
+    Flask-Navigate
+    ~~~~~~~~~~~~~~
 
-    Provides navigation for your Flask application.
+    A dead simple navigation for your Flask application.
 
     :copyright: (c) 2015 by Vital Kudzelka <vital.kudzelka@gmail.com>
     :license: MIT
@@ -13,7 +13,7 @@ from math import ceil
 from flask import (
     current_app, request
 )
-from flask_navigator.compat import xrange
+from flask_navigate.compat import xrange
 
 
 __version__ = '0.0.1'
@@ -116,7 +116,7 @@ class PageState(object):
 
 
 class Navigator(object):
-    """Navigate your Flask application easy."""
+    """Navigate your Flask application easily."""
 
     pager_class = Pager
 
@@ -126,7 +126,7 @@ class Navigator(object):
             self.init_app(app)
 
     def init_app(self, app):
-        app.config.setdefault('NAVIGATOR_PER_PAGE', 10)
+        app.config.setdefault('NAVIGATE_PER_PAGE', 10)
 
         if not hasattr(app, 'extensions'):
             app.extensions = {}
@@ -151,7 +151,7 @@ class Navigator(object):
     def per_page(self):
         return self._parse_request_argument(
             'per_page',
-            current_app.config['NAVIGATOR_PER_PAGE']
+            current_app.config['NAVIGATE_PER_PAGE']
         )
 
     @classmethod

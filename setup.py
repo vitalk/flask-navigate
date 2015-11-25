@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-Flask-Navigator
-===============
+Flask-Navigate
+==============
 
 A dead simple navigation for your Flask application.
 
@@ -10,7 +10,7 @@ Contributing
 ------------
 
 Don't hesitate to create a `GitHub issue
-<https://github.com/vitalk/flask-navigator/issues>`_ for any **bug** or
+<https://github.com/vitalk/flask-navigate/issues>`_ for any **bug** or
 **suggestion**.
 
 """
@@ -32,7 +32,7 @@ def read(*parts):
 
 
 def get_version():
-    version_file = ''.join(read('flask_navigator', '__init__.py'))
+    version_file = ''.join(read('flask_navigate', '__init__.py'))
     version_match = re.search(r'^__version__ = [\'"]([^\'"]*)[\'"]',
                               version_file, re.MULTILINE)
     if version_match:
@@ -45,15 +45,15 @@ install_requires = read('requirements', 'main.txt')
 
 
 setup(
-    name='Flask-Navigator',
+    name='Flask-Navigate',
     version=__version__,
 
     author='Vital Kudzelka',
     author_email='vital.kudzelka@gmail.com',
 
-    url="https://github.com/vitalk/flask-navigator",
+    url="https://github.com/vitalk/flask-navigate",
     description='A dead simple navigation for your Flask application.',
-    download_url='https://github.com/vitalk/flask-navigator/tarball/%s' % __version__,
+    download_url='https://github.com/vitalk/flask-navigate/tarball/%s' % __version__,
     long_description=__doc__,
     license='MIT',
 

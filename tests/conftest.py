@@ -3,7 +3,7 @@
 import pytest
 
 from flask import Flask
-from flask_navigator import Navigator
+from flask_navigate import Navigator
 
 
 @pytest.fixture

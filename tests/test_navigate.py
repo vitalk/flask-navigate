@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import pytest
 
-from flask_navigator import (
+from flask_navigate import (
     Navigator, PageState, Pager
 )
 
@@ -30,7 +30,7 @@ class TestNavigator:
         with navigator.app.test_request_context('?per_page=42'):
             assert navigator.per_page == 42
 
-    @pytest.mark.options(navigator_per_page=7)
+    @pytest.mark.options(navigate_per_page=7)
     def test_per_page_respects_app_config(self, navigator):
         assert navigator.per_page == 7
 
