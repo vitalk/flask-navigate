@@ -158,10 +158,11 @@ class Navigator(object):
     def _parse_request_argument(cls, name, default=1):
         try:
             value = int(request.args.get(name, default))
-        except (TypeError, ValueError):
-            value = default
 
-        if value < 1:
+            if value < 1:
+                value = default
+
+        except (TypeError, ValueError):
             value = default
 
         return value
