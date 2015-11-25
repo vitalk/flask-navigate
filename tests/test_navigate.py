@@ -61,6 +61,10 @@ class TestRequestParser(TestNavigator):
         with app.test_request_context('?foo=bar'):
             assert navigator._parse_request_argument('foo', 42) == 42
 
+    def test_none_as_default(self, app, navigator):
+        with app.test_request_context('?foo=bar'):
+            assert navigator._parse_request_argument('foo', None) is None
+
 
 class TestPageState:
 
